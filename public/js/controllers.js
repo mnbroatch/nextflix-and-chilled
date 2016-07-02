@@ -23,13 +23,15 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
   var placeholder = 'http://school4schools.com/blog/wp-content/plugins/lightbox/images/No-image-found.jpg';
 
   function init() {
+
     $scope.movie = $stateParams.output.movie;
-    $scope.beer = $stateParams.output.beer.data.style || $stateParams.output.beer.data;
+    $scope.beer = $stateParams.output.beer.data;
+    $scope.beer.description = $scope.beer.description || $scope.beer.style.description;
 
     $scope.weight = $stateParams.output.weight;
 
-    if ($stateParams.output.beer.data.labels) {
-      $scope.beerImage = $stateParams.output.beer.data.labels.large;
+    if ($scope.beer.labels) {
+      $scope.beerImage = $scope.beer.labels.large;
     } else {
       $scope.beerImage = placeholder;
     }
@@ -49,7 +51,8 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
         let beer = res[1].data.data;
         console.log(beer);
         $scope.movie = movie;
-        $scope.beer = beer.style || beer;
+        $scope.beer = beer;
+        $scope.beer.description = beer.description || beer.style.description;
 
 
         // output.weight = $scope.weight;
