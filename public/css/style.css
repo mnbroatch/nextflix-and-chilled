@@ -4,9 +4,31 @@ Blue = #5BCAE8;
  */
 
  @font-face {
- 	font-family: netflixFont,
+ 	font-family: netflixFont;
  	src: url('../BebasNeue.otf') format("opentype"); 
  }
+
+  @font-face {
+ 	font-family: chilledFont;
+ 	src: url('../snowtt.ttf'); 
+ }
+
+ .headline {
+ 	font-size: 100px;
+ }
+
+.and {
+	color: red;
+	font-size: 75px;
+}
+.mainHeadline {
+	font-family: netflixFont;
+	color: red;
+}
+.chilledHeadline {
+	color:white;
+	font-family: chilledFont;
+}
 
 .buttons-cell {
     text-align: right;
