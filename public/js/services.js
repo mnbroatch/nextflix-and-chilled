@@ -1,6 +1,7 @@
 "use strict;"
 
-var app = angular.module('appName')
+app = angular.module('appName');
+
 app.service('movieService', function($http){
 
 

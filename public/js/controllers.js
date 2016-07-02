@@ -1,6 +1,6 @@
 "use strict;"
 
-let app = angular.module('appName');
+app = angular.module('appName');
 
 app.controller('mainController', function($scope, Beer) {
 
