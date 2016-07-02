@@ -1,8 +1,23 @@
 "use strict;"
 
-var app = angular.module('appName')
+app = angular.module('appName');
+
 app.service('movieService', function($http){
 
+
+	this.getRandom = () => {
+		return $http({
+			method:'GET',
+			url: '/api/movies/random'
+		})
+		.then( res => {
+			if (res.data.length)
+				return res.data;
+		})
+		.catch(err => {
+			console.log('err: ', err);
+		});
+	}
 
 	this.getAll = () => {
 		return $http({
