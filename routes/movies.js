@@ -6,6 +6,12 @@ let Movie = require('../models/movie');
 
 let router = express.Router();
 
+router.get('/random',function(req,res){
+	Movie.getRandom( (err,movie)=>{
+	console.log('movie',movie);
+		res.status(err? 400:200).send(err || movie);
+	});
+});
 
 router.route('/')
 .get(function(req,res){
