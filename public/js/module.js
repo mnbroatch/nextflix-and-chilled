@@ -3,10 +3,20 @@
 var app = angular.module('appName', ['ui.bootstrap','ui.router','xeditable']); 
 app.config(function($stateProvider, $urlRouterProvider){
 
-    $stateProvider
-      .state('state1', {url: '/', templateUrl: 'html/state1.html', controller: 'state1Controller'})
+	$stateProvider
+	.state('home', {
+		url: '/', 
+		templateUrl: 'html/home.html', 
+		controller: 'homeCtrl'
+	})    
 
-    $urlRouterProvider.otherwise('/');
+	.state('admin', {
+		url: '/admin', 
+		templateUrl: 'html/admin.html', 
+		controller: 'adminCtrl'
+	})   
+
+	$urlRouterProvider.otherwise('/');
 
 });
 
