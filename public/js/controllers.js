@@ -20,7 +20,7 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
   $scope.loading=false;
 
   init();
-  var placeholder = 'http://school4schools.com/blog/wp-content/plugins/lightbox/images/No-image-found.jpg';
+  var placeholder = 'http://vignette3.wikia.nocookie.net/lego/images/a/ac/No-Image-Basic.png/revision/latest?cb=20130819001030';
 
   function init() {
 
