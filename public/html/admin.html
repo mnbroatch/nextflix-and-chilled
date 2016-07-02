@@ -31,9 +31,13 @@
 	<table class="table">
 		<thead>
 			<th>Movie Title</th>
+			<th>Year</th>
+			<th>Netflix ID</th>
 		</thead>
 		<colgroup>
-			<col style="width:80%">
+			<col style="width:40%">
+			<col style="width:20%">
+			<col style="width:20%">
 			<col style="width:20%">
 		</colgroup>  
 
@@ -44,7 +48,7 @@
 			</td>
 
 			<td>
-				<a href="#" editable-text="movie.year" onbeforesave="editOneMovie(movie)" e-required>{{ movie.number ||'empty' }}</a>
+				<a href="#" editable-text="movie.year" onbeforesave="editOneMovie(movie)" e-required>{{ movie.year ||'empty' }}</a>
 			</td>
 
 			<td>
