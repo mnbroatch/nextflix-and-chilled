@@ -18,12 +18,12 @@
 		<script src="/js/mainController.js"></script>
 		<script src="/js/state1Controller.js"></script>
 		<script src="/js/services.js"></script>
-		<script src="/js/live.js"></script>
+		
 
 		<link rel="stylesheet" href="/css/style.css" media="all"> 
 	</head>
 
-	<body ng-app="appName">
+	<body ng-app="appName" ng-controller='mainController'>
 		<div class="container">
 
 
@@ -31,6 +31,8 @@
 				<label class="btn btn-primary" ui-sref="state1" ng-model="state1" uib-btn-radio="'state1'">State 1</label>
 			</div>
 
+			<button ng-click='getBeer()'>Get Beer</button>
+			<pre>{{beers | json}}</pre>
 
 
 			<ui-view></ui-view>

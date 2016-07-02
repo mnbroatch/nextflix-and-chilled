@@ -1,7 +1,7 @@
 "use strict;"
 
-angular.module('appName')
-.service('movieService', function($http){
+var app = angular.module('appName')
+app.service('movieService', function($http){
 
 
 	this.getAll = () => {
@@ -52,6 +52,20 @@ angular.module('appName')
 		})
 		.catch(err => {console.log('err: ', err)});
 	}
+
+
+});
+
+app.service('Beer', function($http) {
+
+
+	this.getRandomBeer = () => {
+		return $http.get('/api/beers')
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
 
 
 });
