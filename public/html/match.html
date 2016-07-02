@@ -1,44 +1,48 @@
-<div class="container-fluid">
+<div class="container-fluid match-container">
+
+	<button class="btn btn-primary" id="reroll-button" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Reroll</span></button>
+
 	<div class="row">
-	<button class="btn btn-primary" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Reroll</span></button>
-		<div class="col-xs-6 netflix text-center">
-			<h1 class="movie-title">{{movie.title}}</h1>
+		<div class="col-sm-6 netflix text-center">
+
+			<div class="row title">
+				<h1 class="movie-title">{{movie.title}}</h1>
+			</div>					
+
 			<div class='row'>
-				<div class='col-xs-6 col-xs-4 col-xs-offset-1  text-center thumbnail'>
-					<img class="img-responsive" src="{{movie.poster}}"></img>
+				<img class='movie-image' src="{{movie.poster}}"></img>
+			</div>					
+
+			<div class='movie-info-area text-center'>
+				<div class="year">
+					<p>Year: {{movie.year}} </p>
 				</div>					
+				<div class="rating">
+					<p>Rating: {{movie.imdbRating}}</p>
+				</div>					
+				<div class="plot">
+					<p>{{movie.plot}}</p>
+				</div>
+			</div>	
 
-				<div class='col-xs-6 col-xs-5 col-xs-offset-1 movie-info-area text-center'>
-					<div class="year">
-						<p>Year: {{movie.year}} </p>
-					</div>					
-					<div class="rating">
-						<p>Rating: {{movie.imdbRating}}</p>
-					</div>					
-					<div class="plot">
-						<p>{{movie.plot}}</p>
-					</div>
-				</div>	
-
-			</div>
 		</div>
 
-		<div class='col-xs-6 chilled text-center'>
+		<div class='col-sm-6 chilled'>
+			<div class="row title">
 			<h1 class="beer-title">{{beer.name}}</h1>
-			<div class='row'>
-				<div class='col-xs-6 col-xs-5 col-xs-offset-1 beer-info-area text-center'>
-					<div class="year">
-						<p>Alcohol Percent: {{beer.abvMax}}%</p>
-					</div>	
-					<div class="description">{{beer.description}}</div>
-				</div>			
+			</div>	
 
-				<div class='col-xs-6 col-xs-4 col-xs-offset-1  text-center thumbnail'>
-					<img class="img-responsive" src="{{beerImage}}"></img>
+			<div class='row text-center'>
+				<img class='movie-image' src="{{beerImage}}"></img>
+			</div>	
 
+			<div class='beer-info-area text-center'>
+				<div class="year">
+					<p>Alcohol Percent: {{beer.abvMax}}%</p>
 				</div>	
+				<div class="description">{{beer.description}}</div>
+			</div>			
 
-			</div>
 		</div>
 
 	</div>
