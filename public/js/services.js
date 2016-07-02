@@ -59,15 +59,36 @@ app.service('movieService', function($http){
 
 app.service('Beer', function($http) {
 
-
 	this.getRandomBeer = () => {
 		return $http.get('/api/beers')
-			.catch(err => {
-				console.log(err);
-			})
+		.catch(err => {
+			console.log(err);
+		})
 	}
 
+	this.calculateBeersToDrink = (weightLbs,gender,runtime,movieScore,abv) => {
+
+		let desiredBAC = calculateDesiredBAC(movieScore);
+		let gramsToDrink = calculateGramsToDrink(weightLbs,gender,desiredBAC,runtime);
+
+		return calculateNumberDrinks(abv, gramsToDrink);
+
+		function calculateGramsToDrink(weightLbs,gender,desiredBAC,runtime){
+			let genderConstant = (gender == "male")? .68 : .55 ;
+			let adjustedBAC = desiredBAC + runtime / 60 * .015;
+			return adjustedBAC * (weightLbs / .0022046) / (100 * genderConstant);
+		}
+
+		function calculateNumberDrinks(abv, gramsToDrink){
+			let fiveOzBeers = gramsToDrink / 14;
+			return fiveOzBeers * (.05/abv);
+		}
+
+		function calculateDesiredBAC(movieScore){
+			return .008 * (10 - movieScore) + .04;
+		}
 
 
+	}
 });
 
