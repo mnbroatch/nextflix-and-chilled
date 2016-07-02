@@ -10,10 +10,11 @@ app.service('movieService', function($http){
 			method:'GET',
 			url: '/api/movies/random'
 		})
-		.then( res => {
-			if (res.data.length)
-				return res.data;
-		})
+		// .then( res => {
+		//   console.log('res', res.data)
+		// 	if (res.data.length)
+		// 		return res.data;
+		// })
 		.catch(err => {
 			console.log('err: ', err);
 		});
