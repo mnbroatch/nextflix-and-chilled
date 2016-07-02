@@ -9,12 +9,17 @@
 				<label>Movie Title</label>
 				<input class="form-control" type="text" placeholder="Title of Movie" ng-model='newMovie.title' required>
 			</div>
-			<button type="submit" class="btn btn-primary">Submit</button>
 
 			<div class="form-group">
-				<label>Movie Title</label>
+				<label>Year Released</label>
 				<input class="form-control" type="number" placeholder="Year of Release" ng-model='newMovie.year' required>
 			</div>
+
+			<div class="form-group">
+				<label>Netflix ID</label>
+				<input class="form-control" type="text" placeholder="Nextflix ID" ng-model='newMovie.netflix' required>
+			</div>
+
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 
@@ -40,6 +45,10 @@
 
 			<td>
 				<a href="#" editable-text="movie.year" onbeforesave="editOneMovie(movie)" e-required>{{ movie.number ||'empty' }}</a>
+			</td>
+
+			<td>
+				<a href="#" editable-text="movie.netflix" onbeforesave="editOneMovie(movie)" e-required>{{ movie.netflix ||'empty' }}</a>
 			</td>
 
 			<td>

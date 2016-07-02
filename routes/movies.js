@@ -16,7 +16,7 @@ router.route('/')
 
 .post(function(req,res){
 	let movie = new Movie(req.body);
-	movie.save((err,savedMovie) => {
+	movie.getInfoAndSave((err,savedMovie)=>{
 		res.status(err? 400:200).send(err || savedMovie);
 	});
 });

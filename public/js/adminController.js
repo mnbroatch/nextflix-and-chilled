@@ -1,7 +1,7 @@
 "use strict;"
 
 angular.module('appName')
-.controller('state1Controller', function($scope,$http,movieService) {
+.controller('adminController', function($scope,$http,movieService) {
 
 	$scope.movieArray =[];
 
