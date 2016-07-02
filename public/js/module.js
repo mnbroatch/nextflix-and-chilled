@@ -12,13 +12,14 @@ app.config(function($stateProvider, $urlRouterProvider){
 		url: '/', 
 		templateUrl: 'html/home.html', 
 		controller: 'homeCtrl',
-		params: {output: null}
+		// params: {output: null}
 	})   	
 
 	.state('match', {
 		url: '/match', 
 		templateUrl: 'html/match.html', 
-		controller: 'matchCtrl'
+		controller: 'matchCtrl',
+		params: {output: null}
 	})    
 
 	// .state('admin', {

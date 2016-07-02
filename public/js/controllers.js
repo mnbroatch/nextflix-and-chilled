@@ -16,19 +16,41 @@ app.controller('mainController', function($scope, Beer) {
 
 
 app.controller('matchCtrl', function($scope, Beer, $stateParams) {
+  console.log($stateParams.output);
 
 })
 
 
 app.controller('homeCtrl', function($scope, $state, Beer, movieService, $stateParams) {
 	let output = {};
+  let movie;
+  let beer;
+
+    movieService.getRandom()
+    .then((res) => {
+      movie = res.data;
+      // console.log('movie', res.data);
+      // $state.go('match', {output: output});
+      return Beer.getRandomBeer();
+    })
+    .then((res) => {
+      beer = res.data;
+      // console.log('beer and movie', output);
+       // $state.go('match', {output: output});
+
+
+    })
+
 
 	$scope.getMatch = () => {
-		movieService.getRandom().then((res) => {
-			output.movie = res.data;
-			console.log('movie', res.data);
-		$state.go('match', {output: output});
-		});
+    if(beer && movie) {
+      output.movie = movie;
+      output.beer = beer;
+      console.log(output);
+
+      $state.go('match', {output: output});
+
+    }
 	}
   
 
