@@ -11,7 +11,8 @@ app.config(function($stateProvider, $urlRouterProvider){
 	.state('home', {
 		url: '/', 
 		templateUrl: 'html/home.html', 
-		controller: 'homeCtrl'
+		controller: 'homeCtrl',
+		params: {output: null}
 	})   	
 
 	.state('match', {
