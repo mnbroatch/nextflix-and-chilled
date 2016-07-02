@@ -1,49 +1,49 @@
 <div class="container-fluid match-container">
-
-	<button class="btn btn-primary" id="reroll-button" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Reroll</span></button>
-
-	<div class="row">
-		<div class="col-sm-6 netflix text-center">
-
-			<div class="row title">
-				<h1 class="movie-title">{{movie.title}}</h1>
-			</div>					
-
-			<div class='row'>
-				<img class='movie-image' src="{{movie.poster}}"></img>
-			</div>					
-
-			<div class='movie-info-area text-center'>
-				<div class="year">
-					<p>Year: {{movie.year}} </p>
-				</div>					
-				<div class="rating">
-					<p>Rating: {{movie.imdbRating}}</p>
-				</div>					
-				<div class="plot">
-					<p>{{movie.plot}}</p>
-				</div>
-			</div>	
-
-		</div>
-
-		<div class='col-sm-6 chilled'>
-			<div class="row title">
-			<h1 class="beer-title">{{beer.name}}</h1>
-			</div>	
-
-			<div class='row text-center'>
-				<img class='movie-image' src="{{beerImage}}"></img>
-			</div>	
-
-			<div class='beer-info-area text-center'>
-				<div class="year">
-					<p>Alcohol Percent: {{beer.abv}}%</p>
-				</div>	
-				<div class="description">{{beer.description}}</div>
-			</div>			
-
-		</div>
-
-	</div>
+    <button class="btn btn-primary btn-lg" id="reroll-button" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Reroll</span></button>
+    <div class="row">
+        <div class="col-sm-6 netflix text-center">
+            <div class="row title">
+                <h1 class="movie-title">{{movie.title}}</h1>
+            </div>
+            <div class='row'>
+                <img class='movie-image' src="{{movie.poster}}"></img>
+            </div>
+            <div class='movie-info-area text-center'>
+             <div class="description panel panel-default">
+             <div class="panel-body">
+                <div class="year">
+                    <p>Year: {{movie.year}} </p>
+                </div>
+                <div class="rating">
+                    <p>Rating: <b>{{movie.imdbRating}} / 10</b></p>
+                </div>
+                <div class="plot">
+                    <p>{{movie.plot}}</p>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        <div class='col-sm-6 chilled'>
+            <div class="row title">
+                <h1 class="beer-title">{{beer.name}}</h1>
+            </div>
+            <div class='row text-center beer-border'>
+                <img class='beer-image' src="{{beerImage}}"></img>
+            </div>
+            <div class='beer-info-area text-center'>
+                <div class="description panel panel-default">
+                    <div class="panel-body">
+                        <div class="year">
+                            <p>Alcohol Percent: <b>{{beer.abv}}%</b></p>
+                        </div>
+                        {{beer.description}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row text-center" id="drinkInfo">
+        <div>You should drink <b>{{numberBeers | number:1}}</b> {{beer.name}}s while watching {{movie.title}}</div>
+    </div>
 </div>

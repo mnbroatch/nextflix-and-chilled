@@ -15,8 +15,12 @@ app.controller('mainController', function($scope, Beer) {
 });
 
 
-app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
+app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService,$state) {
   // console.log($stateParams.output);
+
+  if($stateParams.output === null) {
+    $state.go('home');
+  }
   $scope.loading=false;
 
   init();
@@ -36,6 +40,8 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
       $scope.beerImage = placeholder;
     }
 
+    $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
+
   }
   let moviePromise = movieService.getRandom();
   let beerPromise = Beer.getRandomBeer();
@@ -54,7 +60,7 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService) {
         $scope.beer = beer;
         $scope.beer.description = beer.description || beer.style.description;
 
-
+        $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
         // output.weight = $scope.weight;
         if (beer.labels) {
           $scope.beerImage = beer.labels.large;
@@ -110,12 +116,12 @@ app.controller('homeCtrl', function($scope, $state, Beer, movieService, $statePa
     //    // $state.go('match', {output: output});
     // })
 
+
   Promise.all([moviePromise, beerPromise])
     .then((res) => {
 
       output.movie = res[0].data;
       output.beer = res[1].data;
-      output.weight = $scope.weight;
       loaded = true;
       console.log(loaded);
       if (clicked) {
@@ -126,6 +132,8 @@ app.controller('homeCtrl', function($scope, $state, Beer, movieService, $statePa
 
 
   $scope.getMatch = () => {
+     output.weight = $scope.weight;
+      output.sex = $scope.sex;
     console.log(loaded);
     if (loaded) {
 

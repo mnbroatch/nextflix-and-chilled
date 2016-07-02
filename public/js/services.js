@@ -83,6 +83,9 @@ app.service('Beer', function($http) {
 	}
 
 	this.calculateBeersToDrink = (weightLbs,gender,runtime,movieScore,abv) => {
+		abv = abv/100;
+		console.log(weightLbs,gender,runtime,movieScore,abv);
+		
 
 		let desiredBAC = calculateDesiredBAC(movieScore);
 		let gramsToDrink = calculateGramsToDrink(weightLbs,gender,desiredBAC,runtime);
