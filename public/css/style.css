@@ -1,3 +1,8 @@
+/* Colors 
+Red = #CB0000;
+Blue = #5BCAE8;
+*/
+
 .buttons-cell {
 	text-align:right;	
 }
@@ -14,7 +19,35 @@ td {
 	border-radius: 0%;
 }
 
-/* Home State */
+
+body {
+	background-color: black;
+}
+
+
+/* // Home State // */
+.mainForm {
+	margin-top: 20%
+}
+
+.label-text {
+	color: #5BCAE8;
+	letter-spacing: 1px;
+	font-size: 18px;
+}
+
+.main-input {
+	border-radius: 0%;
+	text-align: center;
+}
+
+.matchBtn {
+	background-color: #CB0000;
+	border: none
+	font-size: 20px;
+}
+
+/* // Match State // */
 
 /*Netflix Side */
 .netflix {
