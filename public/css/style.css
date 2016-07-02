@@ -9,3 +9,59 @@
 td {
 	vertical-align:middle!important;
 }
+
+.btn {
+	border-radius: 0%;
+}
+
+/* Home State */
+
+/*Netflix Side */
+.netflix {
+	height: 100vh;
+	width: 50%;
+	background-color: #CB0000;
+}
+
+.movie-title {
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+
+.movie-image {
+	border: 2px solid black;
+	height: 300px;	
+	background-color: white;
+}
+
+.movie-info-area {
+	border: 2px dashed black;
+	height: 300px;
+}
+
+
+
+/*Chilled Side */
+.chilled {
+	height: 100vh;
+	width: 50%;
+	background-color: #5BCAE8;
+}
+
+.beer-title {
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+
+.beer-image {
+	border: 2px solid black;
+	height: 300px;
+	background-color: white;	
+}
+
+.beer-info-area {
+	border: 2px dashed black;
+	height: 300px;
+}
+
+

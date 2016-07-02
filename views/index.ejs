@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="/css/style.css" media="all"> 
 	</head>
 
+
 	<body ng-app="appName" ng-controller='mainController'>
 		<div class="container">
 
@@ -33,12 +34,11 @@
 
 			<button ng-click='getBeer()'>Get Beer</button>
 			<pre>{{beers | json}}</pre>
+					<ui-view></ui-view>
 
 
-			<ui-view></ui-view>
 
 
-		</div>
 	</body>
 </html>
 
