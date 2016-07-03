@@ -25,6 +25,11 @@ td {
     vertical-align: middle!important;
 }
 
+.ui-view-style {
+	position:absolute;
+	left:0;
+	right:0;
+}
 
 .headline-box {
 	animation: wobbleX infinite;
