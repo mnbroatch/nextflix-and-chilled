@@ -11,13 +11,13 @@ app.service('movieService', function($http){
 			url: '/api/movies/random'
 		})
 		// .then( res => {
-		//   console.log('res', res.data)
-		// 	if (res.data.length)
-		// 		return res.data;
-		// })
-		.catch(err => {
-			console.log('err: ', err);
-		});
+			//   console.log('res', res.data)
+			// 	if (res.data.length)
+				// 		return res.data;
+// })
+			.catch(err => {
+				console.log('err: ', err);
+			});
 	}
 
 	this.getAll = () => {
@@ -82,32 +82,21 @@ app.service('Beer', function($http) {
 		})
 	}
 
-	this.calculateBeersToDrink = (weightLbs,gender,runtime,movieScore,abv) => {
-		abv = abv/100;
-		console.log(weightLbs,gender,runtime,movieScore,abv);
-		
-
-		let desiredBAC = calculateDesiredBAC(movieScore);
-		let gramsToDrink = calculateGramsToDrink(weightLbs,gender,desiredBAC,runtime);
-
-		return calculateNumberDrinks(abv, gramsToDrink);
-
-		function calculateGramsToDrink(weightLbs,gender,desiredBAC,runtime){
-			let genderConstant = (gender == "male")? .68 : .55 ;
-			let adjustedBAC = desiredBAC + runtime / 60 * .015;
-			return adjustedBAC * (weightLbs / .0022046) / (100 * genderConstant);
-		}
-
-		function calculateNumberDrinks(abv, gramsToDrink){
-			let fiveOzBeers = gramsToDrink / 14;
-			return fiveOzBeers * (.05/abv);
-		}
-
-		function calculateDesiredBAC(movieScore){
-			return .008 * (10 - movieScore) + .04;
-		}
-
-
+	this.calculateGramsToDrink = function(weightLbs,gender,desiredBAC,runtime){
+		let genderConstant = (gender == "male")? .68 : .55 ;
+		let adjustedBAC = desiredBAC + runtime / 60 * .015;
+		return adjustedBAC * (weightLbs / .0022046) / (100 * genderConstant);
 	}
+
+	this.calculateNumberDrinks = function (abv, weight,gender,desiredBAC,runtime){
+		let gramsToDrink = this.calculateGramsToDrink(weight,gender,desiredBAC,runtime);
+		let fiveOzBeers = gramsToDrink / 14;
+		return fiveOzBeers * (.05/abv);
+	}
+
+	this.calculateDesiredBAC = function(movieScore){
+		return .008 * (10 - movieScore) + .04;
+	}
+
 });
 

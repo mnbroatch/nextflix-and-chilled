@@ -30,6 +30,7 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService,$s
 
     $scope.movie = $stateParams.output.movie;
     $scope.beer = $stateParams.output.beer.data;
+console.log('		$scope.beer',		$scope.beer);
     $scope.beer.description = $scope.beer.description || $scope.beer.style.description;
 
     $scope.weight = $stateParams.output.weight;
@@ -40,12 +41,15 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService,$s
       $scope.beerImage = placeholder;
     }
 
-    $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
+    // $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
+
+				$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
+        $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv/100,$stateParams.output.weight,$stateParams.output.sex,$scope.desiredBAC,$scope.movie.runtime);
+
 
   }
   let moviePromise = movieService.getRandom();
   let beerPromise = Beer.getRandomBeer();
-
 
   $scope.reRoll = () => {
     $scope.loading = true;
@@ -60,7 +64,9 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService,$s
         $scope.beer = beer;
         $scope.beer.description = beer.description || beer.style.description;
 
-        $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
+				$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
+        $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv/100,$stateParams.output.weight$stateParams.output.sex,$scope.desiredBAC,$scope.movie.runtime);
+
         // output.weight = $scope.weight;
         if (beer.labels) {
           $scope.beerImage = beer.labels.large;
