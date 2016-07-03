@@ -15,22 +15,22 @@ app.controller('mainController', function($scope, Beer) {
 });
 
 
-app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService,$state) {
+app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService, $state) {
   // console.log($stateParams.output);
+  var placeholder = 'http://vignette3.wikia.nocookie.net/lego/images/a/ac/No-Image-Basic.png/revision/latest?cb=20130819001030';
 
-  if($stateParams.output === null) {
+  if ($stateParams.output === null) {
     $state.go('home');
   }
-  $scope.loading=false;
+  $scope.loading = false;
 
   init();
-  var placeholder = 'http://vignette3.wikia.nocookie.net/lego/images/a/ac/No-Image-Basic.png/revision/latest?cb=20130819001030';
 
   function init() {
 
     $scope.movie = $stateParams.output.movie;
     $scope.beer = $stateParams.output.beer.data;
-console.log('		$scope.beer',		$scope.beer);
+    console.log('   $scope.beer', $scope.beer);
     $scope.beer.description = $scope.beer.description || $scope.beer.style.description;
 
     $scope.weight = $stateParams.output.weight;
@@ -40,11 +40,12 @@ console.log('		$scope.beer',		$scope.beer);
     } else {
       $scope.beerImage = placeholder;
     }
+    console.log($scope.beerImage);
 
     // $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
 
-				$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
-        $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv/100,$stateParams.output.weight,$stateParams.output.sex,$scope.desiredBAC,$scope.movie.runtime);
+    $scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
+    $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv / 100, $stateParams.output.weight, $stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
 
 
   }
@@ -64,15 +65,18 @@ console.log('		$scope.beer',		$scope.beer);
         $scope.beer = beer;
         $scope.beer.description = beer.description || beer.style.description;
 
-				$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
-        $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv/100,$stateParams.output.weight$stateParams.output.sex,$scope.desiredBAC,$scope.movie.runtime);
+        $scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
+        $scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv / 100, $stateParams.output.weight,$stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
 
         // output.weight = $scope.weight;
+          console.log(beer.labels);
         if (beer.labels) {
           $scope.beerImage = beer.labels.large;
         } else {
           $scope.beerImage = placeholder;
         }
+
+        console.log($scope.beerImage);
         $scope.loading = false;
         moviePromise = movieService.getRandom();
         beerPromise = Beer.getRandomBeer();
@@ -138,8 +142,8 @@ app.controller('homeCtrl', function($scope, $state, Beer, movieService, $statePa
 
 
   $scope.getMatch = () => {
-     output.weight = $scope.weight;
-      output.sex = $scope.sex;
+    output.weight = $scope.weight;
+    output.sex = $scope.sex;
     console.log(loaded);
     if (loaded) {
 
