@@ -42,10 +42,10 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService, $
 		}
 		console.log($scope.beerImage);
 
-		// $scope.numberBeers = Beer.calculateBeersToDrink($stateParams.output.weight, $stateParams.output.sex,$scope.movie.runtime,+$scope.movie.imdbRating,+$scope.beer.abv);
-
 		$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
-		$scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv / 100, $stateParams.output.weight, $stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
+		$scope.adjustedABV = $scope.beer.abv/100 || .05;
+		$scope.ABVToDisplay = $scope.beer.abv || "Unknown ";
+		$scope.numberBeers = Beer.calculateNumberDrinks($scope.adjustedABV, $stateParams.output.weight, $stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
 
 
 	}
@@ -58,7 +58,6 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService, $
 		Promise.all([moviePromise, beerPromise])
 		.then((res) => {
 			let movie = res[0].data;
-			// debugger;
 			let beer = res[1].data.data;
 			console.log(beer);
 			$scope.movie = movie;
@@ -66,7 +65,9 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService, $
 			$scope.beer.description = beer.description || beer.style.description;
 
 			$scope.desiredBAC = Beer.calculateDesiredBAC($scope.movie.imdbRating);
-			$scope.numberBeers = Beer.calculateNumberDrinks($scope.beer.abv / 100, $stateParams.output.weight,$stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
+			$scope.adjustedABV = $scope.beer.abv/100 || .05;
+			$scope.ABVToDisplay = $scope.beer.abv || "Unknown ";
+			$scope.numberBeers = Beer.calculateNumberDrinks($scope.adjustedABV, $stateParams.output.weight, $stateParams.output.sex, +$scope.desiredBAC, +$scope.movie.runtime);
 
 			// output.weight = $scope.weight;
 			console.log(beer.labels);
@@ -97,72 +98,35 @@ app.controller('homeCtrl', function($scope, $state, Beer, movieService, $statePa
 	let loaded = false;
 	let clicked = false;
 
-	// $scope.$watch('loaded', function(newValue, oldValue) {
-		//   // debugger;
-		//   console.log('jfdslkaj')
-		//   if (newValue !== oldValue) {
-			//     console.log('changes!')
-			//     if (clicked) {
-				//       output.movie = movie;
-				//       output.beer = beer;
-				//       console.log(output);
-				//       $state.go('match', { output: output });
+	let moviePromise = movieService.getRandom()
 
-				//     }
-				//   }
-				// })
+	let beerPromise = Beer.getRandomBeer()
 
+	Promise.all([moviePromise, beerPromise])
+	.then((res) => {
 
-				let moviePromise = movieService.getRandom()
+		output.movie = res[0].data;
+		output.beer = res[1].data;
+		loaded = true;
+		console.log(loaded);
+		if (clicked) {
+			$state.go('match', { output: output });
+		}
+	})
 
-				//   .then((res) => {
-					//   movie = res.data;
-					//   // console.log('movie', res.data);
-					//   // $state.go('match', {output: output});
-					// })
+	$scope.getMatch = () => {
+		output.weight = $scope.weight;
+		output.sex = $scope.sex;
+		console.log(loaded);
+		if (loaded) {
 
-					let beerPromise = Beer.getRandomBeer()
+			console.log(output);
+			$state.go('match', { output: output });
+		} else {
+			clicked = true;
 
-					//   .then((res) => {
-						//   beer = res.data;
-						//   // console.log('beer and movie', output);
-						//    // $state.go('match', {output: output});
-						// })
+		}
 
-
-						Promise.all([moviePromise, beerPromise])
-						.then((res) => {
-
-							output.movie = res[0].data;
-							output.beer = res[1].data;
-							loaded = true;
-							console.log(loaded);
-							if (clicked) {
-								$state.go('match', { output: output });
-							}
-						})
-
-
-
-						$scope.getMatch = () => {
-							output.weight = $scope.weight;
-							output.sex = $scope.sex;
-							console.log(loaded);
-							if (loaded) {
-
-								console.log(output);
-								$state.go('match', { output: output });
-							} else {
-								clicked = true;
-
-
-
-							}
-
-
-
-						}
-
-
+	}
 
 })

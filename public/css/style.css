@@ -31,6 +31,10 @@ td {
 	right:0;
 }
 
+.home-container {
+	overflow-x:hidden;
+}
+
 .headline-box {
 	animation: wobbleX infinite;
 	animation-duration:4s;

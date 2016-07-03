@@ -10,14 +10,9 @@ app.service('movieService', function($http){
 			method:'GET',
 			url: '/api/movies/random'
 		})
-		// .then( res => {
-			//   console.log('res', res.data)
-			// 	if (res.data.length)
-				// 		return res.data;
-// })
-			.catch(err => {
-				console.log('err: ', err);
-			});
+		.catch(err => {
+			console.log('err: ', err);
+		});
 	}
 
 	this.getAll = () => {
@@ -89,6 +84,7 @@ app.service('Beer', function($http) {
 	}
 
 	this.calculateNumberDrinks = function (abv, weight,gender,desiredBAC,runtime){
+	console.log(abv,weight,gender,desiredBAC,runtime);
 		let gramsToDrink = this.calculateGramsToDrink(weight,gender,desiredBAC,runtime);
 		let fiveOzBeers = gramsToDrink / 14;
 		return fiveOzBeers * (.05/abv);
