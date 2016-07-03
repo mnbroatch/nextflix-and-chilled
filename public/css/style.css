@@ -25,9 +25,14 @@ td {
     vertical-align: middle!important;
 }
 
+
 .headline {
     margin-top: 100px;
     font-size: 100px;
+}
+
+.matchHeadline {
+	font-size: 100px;
 }
 
 .and {
@@ -137,12 +142,17 @@ border-radius: 0%;
 
 #buttons {
     position: absolute;
-    top: 25px;
+    top: 147px;
     width: 190px;
     z-index: 1;
     left: calc(50% - 95px);
 }
 
+#reRoll {
+	    margin-right: 2px;
+    width: 92px;
+
+}
 .re-button {
     /*position: absolute;
     top: 25px;
