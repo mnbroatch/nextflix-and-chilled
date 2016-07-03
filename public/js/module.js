@@ -1,6 +1,6 @@
 "use strict;"
 
-var app = angular.module('appName', ['ui.bootstrap','ui.router','xeditable']); 
+var app = angular.module('appName', ['ui.bootstrap','ui.router','xeditable', 'ngAnimate']); 
 app.config(function($stateProvider, $urlRouterProvider){
 
 

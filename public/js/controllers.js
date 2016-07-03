@@ -83,6 +83,10 @@ app.controller('matchCtrl', function($scope, Beer, $stateParams, movieService, $
       })
 
 
+  };
+
+  $scope.restart = () => {
+    $state.go('home');
   }
 
 
