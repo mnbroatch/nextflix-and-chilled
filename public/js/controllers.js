@@ -77,12 +77,7 @@ console.log('		$scope.beer',		$scope.beer);
         moviePromise = movieService.getRandom();
         beerPromise = Beer.getRandomBeer();
       })
-
-
   }
-
-
-
 })
 
 

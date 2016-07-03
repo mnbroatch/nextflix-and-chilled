@@ -26,8 +26,15 @@ td {
 }
 
 
+.headline-box {
+	animation: wobbleX infinite;
+	animation-duration:4s;
+}
+
 .headline {
-	margin-top:100px;
+	animation: wobbleY infinite;
+	animation-duration:4s;
+	margin-top: 100px;
 	font-size: 100px;
 }
 
@@ -185,3 +192,64 @@ border-radius: 0%;
 	position:relative;
 	bottom:15px;
 }
+
+@keyframes wobbleY {
+	0% {
+		animation-timing-function:ease-out;	
+	}
+	12% {
+		transform:translateY(-20px);	
+		animation-timing-function:ease-in-out;
+	}
+	37% {
+		transform:translateY(20px);	
+		animation-timing-function:ease-in-out;
+	}
+	62% {
+		transform:translateY(-20px);	
+		animation-timing-function:ease-in-out;
+	}
+	87% {
+		transform:translateY(20px);	
+		animation-timing-function:ease-in;
+	}
+	100% {
+		transform:translateY(0px);	
+		animation-timing-function:ease-out;
+	}
+}
+
+@keyframes wobbleX {
+	0% {
+			animation-timing-function:ease-out;
+	}
+	25% {
+		transform:translateX(-50px) rotate(-10deg);	
+		animation-timing-function:ease-in-out;
+	}
+	75% {
+		transform:translateX(50px) rotate(10deg);	
+		animation-timing-function:ease-in;
+	}
+}
+
+@keyframes wobbleRot {
+	0% {
+			animation-timing-function:ease-out;
+	}
+	25% {
+		animation-timing-function:ease-in-out;
+	}
+	75% {
+		animation-timing-function:ease-in;
+	}
+}
+
+
+
+
+
+
+
+
+
