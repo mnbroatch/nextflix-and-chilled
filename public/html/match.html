@@ -1,11 +1,16 @@
 <div class="container-fluid match-container">
-	<h1 class='matchHeadline text-center'><span class="mainHeadline">NETFLIX</span> <span class="and">&</span> <span class="chilledHeadline">CHILLED</span> </h1>
-	<div id="buttons">
-		
-	<button class="btn btn-primary btn-lg re-button" id="reRoll" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Re-Roll</span></button>
-	<button class="btn btn-primary btn-lg re-button" ng-click="restart()">Restart</button>
-</div>
-	
+
+	<div id="match-top-stuff">
+
+		<h1 class='matchHeadline text-center'><span class="mainHeadline">NETFLIX</span> <span class="and">&</span> <span class="chilledHeadline">CHILLED</span> </h1>
+
+		<div id="buttons">
+			<button class="btn btn-primary btn-lg re-button" id="reRoll" ng-click="reRoll()"><span ng-class="{'fa fa-refresh fa-spin fa-fw': loading}"></span><span ng-hide='loading'>Re-Roll</span></button>
+			<button class="btn btn-primary btn-lg re-button" ng-click="restart()">Restart</button>
+		</div>
+
+	</div>
+
 	<div class="row">
 		<div class="col-sm-6 netflix text-center">
 			<div class="row title">
